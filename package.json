@@ -1,0 +1,11 @@
+{
+  "name": "maquinita",
+  "version": "1.0.0",
+  "description": "Vending Machine Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Moises Sacal",
+  "license": "MIT"
+}
