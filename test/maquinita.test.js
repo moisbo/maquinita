@@ -102,8 +102,7 @@ describe('Maquinita Library as VM', () => {
       const deposit = ['.50', '.50', '.20'];
       let wallet = [];
       deposit.map((coin) => {
-        //wallet = vm.insertCoin(coin, state.denominations, wallet);
-        wallet = wallet.concat(vm.insertCoin(coin, state.denominations, state.wallet));
+        wallet = vm.insertCoin(coin, state.denominations, wallet);
       });
       const purchase = vm.purchase('taco', wallet, state.products);
       assert.deepEqual({item: {item: 'taco', price: '1.2', qty: 4}, change: 0}, purchase);
@@ -113,8 +112,7 @@ describe('Maquinita Library as VM', () => {
       const deposit = ['.50', '.20', '.20'];
       let wallet = [];
       deposit.map((coin) => {
-        //wallet = vm.insertCoin(coin, state.denominations, wallet);
-        wallet = wallet.concat(vm.insertCoin(coin, state.denominations, state.wallet));
+        wallet = vm.insertCoin(coin, state.denominations, wallet);
       });
       const purchase = vm.purchase('taco', wallet, state.products);
 
@@ -122,11 +120,10 @@ describe('Maquinita Library as VM', () => {
     });
 
     it('should insert .50, .20, .10 and get nothing and the change', () => {
-      const deposit = ['.50', '.20', '.10'];
+      const deposit = ['.50', '.20', '.20'];
       let wallet = [];
       deposit.map((coin) => {
-        //wallet = vm.insertCoin(coin, state.denominations, wallet);
-        wallet = wallet.concat(vm.insertCoin(coin, state.denominations, state.wallet));
+        wallet = vm.insertCoin(coin, state.denominations, wallet);
       });
       const purchase = vm.purchase('taco', wallet, state.products);
       assert.deepEqual({item: null, change: wallet}, purchase);
