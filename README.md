@@ -5,9 +5,10 @@
 - Returns change along with the item.
 - Coins are fully returned if there is no item.
 
-
+Example vending machine state:
 ``` javascript
-products: [
+const state = {
+      products: [
         {
           item: 'taco',
           price: '1.2',
@@ -26,10 +27,11 @@ products: [
         {
           item: 'guac',
           price: '.70',
-          qty: 0
+          qty: 5
         }
       ],
       denominations: ['1', '2', '.50', '.20']
+    };
 ```
 
 
