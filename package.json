@@ -4,8 +4,14 @@
   "description": "Vending Machine Library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter progress --require babel-core/register",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Moises Sacal",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-preset-es2015": "^6.16.0",
+    "mocha": "^3.1.2"
+  }
 }
