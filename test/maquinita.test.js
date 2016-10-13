@@ -30,6 +30,7 @@ describe('Maquinita Library as VM', () => {
       });
       assert.deepEqual(deposit, wallet);
     });
+
   });
 
   describe('Decrease storage', () => {
@@ -94,8 +95,7 @@ describe('Maquinita Library as VM', () => {
           qty: 5
         }
       ],
-      denominations: ['1', '2', '.50', '.20'],
-      funds: []
+      denominations: ['1', '2', '.50', '.20']
     };
 
     it('should insert .50, .50, .20 and get a taco', () => {
@@ -119,7 +119,7 @@ describe('Maquinita Library as VM', () => {
       assert.deepEqual({item: null, change: wallet}, purchase);
     });
 
-    it('should insert .50, .20, .10 and get nothing and the change', () => {
+    it('should insert .50, .20, .20 and get nothing and the change', () => {
       const deposit = ['.50', '.20', '.20'];
       let wallet = [];
       deposit.map((coin) => {
@@ -127,6 +127,16 @@ describe('Maquinita Library as VM', () => {
       });
       const purchase = vm.purchase('taco', wallet, state.products);
       assert.deepEqual({item: null, change: wallet}, purchase);
+    });
+
+    it('should insert 1, .20, .10 and get a taco and .20 in change', () => {
+      const deposit = ['1', '.20', '.20'];
+      let wallet = [];
+      deposit.map((coin) => {
+        wallet = vm.insertCoin(coin, state.denominations, wallet);
+      });
+      const purchase = vm.purchase('taco', wallet, state.products);
+      assert.deepEqual({item: { item: 'taco', price: '1.2', qty: 3 }, change: .20}, purchase);
     });
 
   });
@@ -155,8 +165,7 @@ describe('Maquinita Library as VM', () => {
           qty: 0
         }
       ],
-      denominations: ['1', '2', '.50', '.20'],
-      funds: []
+      denominations: ['1', '2', '.50', '.20']
     };
 
     it('should be out of guac and return all change', () => {
@@ -172,5 +181,7 @@ describe('Maquinita Library as VM', () => {
 
       assert.deepEqual({item: null, change: deposit}, purchase);
     });
+
   });
+
 });
