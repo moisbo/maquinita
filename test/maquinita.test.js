@@ -182,6 +182,20 @@ describe('Maquinita Library as VM', () => {
       assert.deepEqual({item: null, change: deposit}, purchase);
     });
 
+    it('should buy salsa and return change', () => {
+
+      const deposit = ['.50'];
+      let wallet = [];
+
+      deposit.map((coin) => {
+        wallet = vm.insertCoin(coin, state.denominations, wallet)
+      });
+
+      const purchase = vm.purchase('salsa', wallet, state.products);
+
+      assert.deepEqual({item: { item: 'salsa', price: '.20', qty: 4 }, change: .30}, purchase);
+    });
+
   });
 
 });

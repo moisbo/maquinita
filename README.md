@@ -37,14 +37,21 @@ const state = {
 
 Example use:
 ```javascript
-const deposit = ['.50', '.20'];
+const deposit = ['.50'];
 let wallet = [];
 
 deposit.map((coin) => {
   wallet = vm.insertCoin(coin, state.denominations, wallet)
 });
 
-const purchase = vm.purchase('guac', wallet, state.products);
+const purchase = vm.purchase('salsa', wallet, state.products);
 
-assert.deepEqual({item: null, change: deposit}, purchase);
+assert.deepEqual({item: { item: 'salsa', price: '.20', qty: 4 }, change: .30}, purchase);
 ```
+
+
+#### Test this library with 
+
+npm install
+
+npm test
