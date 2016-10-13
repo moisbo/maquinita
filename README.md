@@ -52,6 +52,6 @@ assert.deepEqual({item: { item: 'salsa', price: '.20', qty: 4 }, change: .30}, p
 
 #### Test this library with 
 
-npm install
+`npm install`
 
-npm test
+`npm test`
